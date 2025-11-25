@@ -34,3 +34,15 @@ To run a container serving a web application specifically on port 8080. You can 
 
 To create a PAT on Dockerhub, go to their website and login. Then you can go to settings and find the PAT section and create one. Then go to you Github repo and go to settings then secrets and variables. Then you can create a secret and name it. The secrets for this specific project is your github username and the personal access token to sign in.
 
+The workflow is located within the .github/workflows folder and is titled project-workflow.yml. This workflow pushes your current repository onto docker when something is commited to the main branch or it is manually triggered. If you use this workflow in a different repository, you would need to change the branch name you are specifying.
+
+Link to workflow file:
+
+- 
+
+# Sources
+
+**Part 2:**
+
+- Assistance with creating the .yml file: Chatgpt 
+  - prompt: "Give me an example .yml github workflow which logs in and builds a docker image"
