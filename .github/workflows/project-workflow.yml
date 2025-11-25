@@ -1,0 +1,12 @@
+name: project-workflow
+on:
+  push:
+    branches: [main]
+    workflow-dispatch:
+  jobs:
+    docker-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+      - uses: actions/checkout@v4
+    
