@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="../style/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <h1>Band Website</h1>
+
+    <div class="header">
+        <ul>
+            <li>
+                <a href="../index.html">Home </a>
+            </li>
+            <li>
+                <a href="aboutUs.html">About Us </a>
+            </li>
+            <li>
+                <a href="songs.html">Songs </a>
+            </li>
+            <li>
+                <a href="classActivity.html">Class Testing </a>
+            </li>
+            <li>
+                <a href="cart.html">Cart</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Body -->
+    <div>
+        <!-- Form -->
+        <div>
+    
+            <table>
+                <form name="CartForm" onsubmit="printRecipt(); event.preventDefault()"">
+                    <tr>
+                        <th>First Name</th>
+                        <td><input type="text" name="firstName" id="firstName" required /></td>
+                    </tr>
+                    <tr>
+                        <th>Last Name</th>
+                        <td><input type="text" name="lastName" id="lastName" /></td>
+                    </tr>
+                    <tr>
+                        <th>Item ID</th>
+                        <td><input type="text" name="itemID" id="itemID" /></td>
+                    </tr>
+                    <tr>
+                        <th>Price</th>
+                        <td><input type="text" name="price" id="price" /></td>
+                    </tr>
+                    <tr>
+                        <th>Quantity</th>
+                        <td><input type="text" name="quantity" id="quantity" /></td>
+                    </tr>
+
+                </form>
+            </table>
+        </div>
+
+        <!-- Buttons -->
+        <button onclick="getTime(); printRecipt(); saveData()">Purchase</button>
+
+        <button onclick="loadData()">Display</button>
+
+        <!-- Body 2 -->
+        <p id="finalMessage"> </p>
+
+        <p id="display"> </p>
+
+
+    </div>
+
+
+    <!-- Contact Table -->
+    <div>
+        <p>Caleb McCool - 937-557-8540</p>
+    </div>
+
+
+    <!-- Footer -->
+    <div>
+        <p><i>Copyright</i> | <b>Caleb McCool</b> | <i>Copyright</i></p>
+    </div>
+
+
+    <script src="../javascript.js"></script>
+    
+</body>
+</html>
