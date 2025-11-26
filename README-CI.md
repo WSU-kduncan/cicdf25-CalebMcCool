@@ -38,7 +38,17 @@ The workflow is located within the .github/workflows folder and is titled projec
 
 Link to workflow file:
 
-- 
+- https://github.com/WSU-kduncan/cicdf25-CalebMcCool/blob/main/.github/workflows/project-workflow.yml
+
+# Part 3
+
+To access your Github tags, you go to your Github repo, go into settings, and go under the tags section of the code and automation submenu. To generate a tag in a git repo, you would use the command:
+
+- git tag -a v1.0.0
+
+To push this tag, you just git push like you would with a commit. 
+
+
 
 # Sources
 
