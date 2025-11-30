@@ -1,3 +1,16 @@
+# Introduction to CI Project
+
+The goal of this project is to be able to continuously edit your site (or whatever you are hosting) and have it generate a new image with these new changes correlated with a version tag. The tools used in this project are: 
+
+- Docker file
+  - This holds the configurations within docker
+- Github Workflow
+  - This detects a push within the Github repo and it executes commands based on a push. 
+
+Diagram:
+
+![](Project4Diagram.png)
+
 # Part 1
 
 **Website and Dockerfile**
@@ -42,13 +55,17 @@ Link to workflow file:
 
 # Part 3
 
-To access your Github tags, you go to your Github repo, go into settings, and go under the tags section of the code and automation submenu. To generate a tag in a git repo, you would use the command:
+To access your Github tags, you go to your Github repo, go into settings, and go under the tags section of the code and automation submenu. To push this tag, you just git push like you would with a commit.  To generate a tag in a git repo, you would use the command:
 
 - git tag -a v1.0.0
 
-To push this tag, you just git push like you would with a commit. 
+The workflow triggers when there is any specified tag included. This needs to include major, minor, and patch sections. The workflow gets the version from your git push, and builds a docker image with the same version tag . 
 
+If this was done in a different repo, you could just copy and paste the .yml file and put it within a new repo. You would not need to change anything, because this file is not dependent on the repo. 
 
+Link to workflow file: 
+
+- https://github.com/WSU-kduncan/cicdf25-CalebMcCool/blob/main/.github/workflows/project-workflow.yml
 
 # Sources
 
@@ -56,3 +73,8 @@ To push this tag, you just git push like you would with a commit.
 
 - Assistance with creating the .yml file: Chatgpt 
   - prompt: "Give me an example .yml github workflow which logs in and builds a docker image"
+
+**Part 3:**
+
+- Assistance with editing the tag and metadata: Chatgpt
+  - prompt: "What is the most efficient way of updating a workflow yml file which only deals with the 'latest' tag to incorporate version and docker metadata retrieval".

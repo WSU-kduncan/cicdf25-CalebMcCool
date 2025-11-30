@@ -1,8 +1,8 @@
 name: project-workflow
 on:
   push:
-    branches: [main]
-  workflow-dispatch:
+    tags:
+      - 'v*.*.*'
 
 jobs:
   docker-push:
@@ -21,10 +21,15 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Get Docker Version
+        id: data
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/project3site
+
       - name: build and push docker
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKERHUB_USERNAME }}/project3site:latest
-    
+          tags: ${{ steps.data.outputs.tags }}
