@@ -40,3 +40,32 @@ To determine if it is serving a web application you can type:
 - (Within Ubuntu) - curl localhost:80
 - (Within Host Computer) - curl http://13.218.110.25
 
+The link to the bash script within the repo is:
+
+- https://github.com/WSU-kduncan/cicdf25-CalebMcCool/blob/main/deployment/deploymentCopy.sh
+
+# Part 2
+
+**Configuring webhook listener on EC2 Instance**
+
+To install adnanh's webhook, you can just run the command:
+
+- sudo apt-get install webhook
+
+Verify its installed by checking the version:
+
+- webhook --version
+
+The webhook definition file defines the id of the webhook itself, the path to the executeable .sh script. And the path to the working directory where the webhook is located. To determine if the definition file was loaded by webhook you can type:
+
+- webhook -hooks ~/webhooks/hooks.json -verbose
+
+To check if the webhook is recieving payloads that trigger, we can type 
+
+- sudo journalctl -u webhook -f
+
+When you are looking at docker processes with "docker ps", you can check to see the correctly labeled container running on port 80. 
+
+**Sources**
+
+Chatgpt - "How to create a systemd service to run webhooks all the time"

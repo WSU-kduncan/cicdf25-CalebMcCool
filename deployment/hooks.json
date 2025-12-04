@@ -1,0 +1,8 @@
+[
+	{
+
+"id": "deploy",
+"execute-command": "/home/ubuntu/deployment.sh",
+"command-working-directory": "/home/ubuntu/webhooks"
+	}
+]
