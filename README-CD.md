@@ -66,6 +66,34 @@ To check if the webhook is recieving payloads that trigger, we can type
 
 When you are looking at docker processes with "docker ps", you can check to see the correctly labeled container running on port 80. 
 
+Link to definition file:
+
+- https://github.com/WSU-kduncan/cicdf25-CalebMcCool/blob/main/deployment/hooks.json
+
+**Configure a Webhook Service on EC2 Instance**
+
+The webhook service file holds the configuration for the webhook service. It contains the ExecStart section which loads the config file that defines the hooks. To completely start the webhook service, you can run the following commands:
+
+- sudo systemctl daemon-reload
+- sudo systemctl enable webhook
+- sudo systemctl start webhook
+- sudo systemctl status webhook
+
+To verify the webhook service is capturing payloads, you need to look at the information provided when you run the ''sudo journalctl -u webhook -f" command.
+
 **Sources**
 
 Chatgpt - "How to create a systemd service to run webhooks all the time"
+
+Chatgpt - "Explain the webhook service file and where it is"
+
+# Part 3
+
+Dockerhub is the payload sender I used because that is the last thing reached before the everything is done deploying. This ensures that it redeploys only when a new valid image exists. Within dockerhub, you can enable payloads by going into your project repo and selecting the webhook tab and setting up the url within this tab to your ec2 instance with the port and webhook extension. To varify this is working correctly, you need to look for the word POST followed by dockerhub's ip whenever you run the ''sudo journalctl -u webhook -f". To validate your script not running when you type anything else, you can test it using the curl command on a terminal, it should not run. 
+
+# Part 4
+
+The goal of this project is to automatically launch a new docker container whenever a new version of the repo is commited to github. The tools used for this is Github for repo change tracking and triggering, and Dockerhub which builds an destroys the images themselves. The rest of this project is creating configuration files an scripts to perform tasks upon triggering. 
+
+The sources I used were mainly my class notes and chatGPT whenever I got stuck. 
+
