@@ -1,0 +1,12 @@
+[Unit]
+Description=Webhook Listener
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/webhook -hooks /home/ubuntu/webhooks/hooks.json -verbose
+Restart=always
+User=ubuntu
+WorkingDirectory=/home/ubuntu/webhooks
+
+[Install]
+WantedBy=multi-user.target
