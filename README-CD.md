@@ -8,7 +8,7 @@ The Instance type is t2.medium
 
 The recommended volume size is 30GB of Storage as well as 2 CPU Cores and 4GB of RAM.
 
-I configured my security group to allow ssh and http connection through any IP. This is because the private key is only known by my system and so if I were to ssh into this on another network, it will be secure and safe still.
+I configured my security group to allow ssh and http connection through any IP. This is because the private key is only known by my system and so if I were to ssh into this on another network, it will be secure and safe still. I needed to include an opening for port 9000 as well with any IP able to access that due to the webhook running on port 9000.
 
 **Docker Setup on OS on the EC2 Instance**
 
@@ -18,6 +18,8 @@ To install docker, you can type:
 - sudo apt install -y ca-certificates curl gnupg lsb-release
 - sudo apt  install docker.io
 - sudo usermod -aG docker ubuntu
+
+By using Ubuntu, there is no additional dependencies.
 
 To confirm docker is installed and can run containers you can type: 
 
@@ -37,8 +39,10 @@ Once you see that everything is working and you test things out, you can run it 
 
 To determine if it is serving a web application you can type:
 
-- (Within Ubuntu) - curl localhost:80
-- (Within Host Computer) - curl http://13.218.110.25
+- (Within Ubuntu) - curl http://localhost
+- (Within Local Computer) - curl http://ubuntu-ip
+
+The bash script stops the existing container, deletes it off the ubuntu system, pulls the new docker container from dockerhub, than runs that container on port 80. You can test if this is working by making a change to the website, running the script, and seeing the new docker container with the updated website.
 
 The link to the bash script within the repo is:
 
@@ -63,6 +67,8 @@ The webhook definition file defines the id of the webhook itself, the path to th
 To check if the webhook is recieving payloads that trigger, we can type 
 
 - sudo journalctl -u webhook -f
+
+This will show you vast amounts of information about the webhook. Within it, you can see that when you manually activate the webhook, it will use the keyword GET when it talks about the http request. When the webhook is activated through dockerhub, it will say POST.
 
 When you are looking at docker processes with "docker ps", you can check to see the correctly labeled container running on port 80. 
 
